@@ -5,9 +5,9 @@ function Card() {
   return (
     <section className='cards'>
         {
-            hero.map((item) => {
+            hero.map((item, index) => {
                 return (
-                    <div className="card" key={item.id}>
+                    <div className="card" key={index}>
                         <div className="left">
                             <img src={item.cover} alt="" />
                         </div>

@@ -17,7 +17,7 @@ function Header() {
     const [mobile, setMobile] = useState(false)
 
     return (
-        <header>
+        <header className='header'>
             <div className="container">
                 <nav>
                     <div className="toggle">
@@ -37,9 +37,9 @@ function Header() {
                         className={mobile ? "mobile-nav" : "menu"}
                         >
                             {
-                                navlist.map((item) => {
+                                navlist.map((item, index) => {
                                     return (
-                                        <li key={item.id}>
+                                        <li key={index}>
                                             <Link to={item.path}>{item.text}</Link>
                                         </li>
                                     )
