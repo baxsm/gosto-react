@@ -7,7 +7,6 @@ const KEY = process.env.REACT_APP_PUBLISHER_KEY;
 const stripePromise = loadStripe(KEY)
 
 export default function CheckOut() {
-
     return (
         <Elements stripe={stripePromise}>
             <CheckOutForm />

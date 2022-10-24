@@ -2,6 +2,7 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import './checkout.css'
 
 const CARD_OPTIONS = {
     iconStyle: "solid",
@@ -52,7 +53,7 @@ export default function CheckOutForm() {
         if (!error) {
             try {
                 const { id } = paymentMethod
-                const response = await axios.post("localhost//payment", {
+                const response = await axios.post("https://stripe-backend-three.vercel.app/stripe/payment/", {
                     amount: totalPrice,
                     id
                 })
@@ -71,7 +72,7 @@ export default function CheckOutForm() {
     }
 
     return (
-        <>
+        <section className="stripeContainer">
             {
                 !success
                     ?
@@ -88,6 +89,6 @@ export default function CheckOutForm() {
                         <h2>Payment Made!</h2>
                     </div>
             }
-        </>
+        </section>
     )
 }
