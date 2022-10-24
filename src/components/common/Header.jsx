@@ -13,8 +13,10 @@ import { DELETE } from '../../controller/action'
 function Header() {
 
     window.addEventListener('scroll', function () {
-        const header = this.document.querySelector(".header");
-        header.classList.toggle("active", this.window.scrollY > 100);
+        try {
+            const header = this.document.querySelector(".header");
+            header.classList.toggle("active", this.window.scrollY > 100);
+        } catch (err) { }
     })
 
     const [mobile, setMobile] = useState(false)
@@ -43,7 +45,7 @@ function Header() {
     }
 
     useEffect(() => {
-        calculateTotalPrice()   
+        calculateTotalPrice()
     }, [calculateTotalPrice])
 
     return (
@@ -113,7 +115,7 @@ function Header() {
                                                         </div>
                                                         <div className="details_content_detail">
                                                             <div className="details_content_detail_price">
-                                                                <p>{e.title.slice(0,20)} ...</p>
+                                                                <p>{e.title.slice(0, 20)} ...</p>
                                                                 <p>Price : ${e.price}</p>
                                                                 <p>Quantity : {e.qty}</p>
                                                             </div>
@@ -128,8 +130,10 @@ function Header() {
                                             }
                                             <div className="details_total">
                                                 <h4>Total : ${totalPrice}</h4>
+                                                <Link to="/checkout">
+                                                    <button className='button'>CHECKOUT</button>
+                                                </Link>
                                             </div>
-
                                         </section>
                                     )
                                     : (

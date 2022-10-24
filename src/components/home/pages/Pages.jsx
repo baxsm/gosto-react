@@ -1,5 +1,6 @@
 import React from 'react'
 import { createBrowserRouter, RouterProvider, Route, Outlet } from 'react-router-dom';
+import CheckOut from '../../checkout/CheckOut';
 import Footer from '../../common/Footer';
 import Header from '../../common/Header';
 import Details from '../details/Details';
@@ -30,7 +31,10 @@ const Layout = () => {
         }
       ],
     },
-  
+    {
+      path: '/checkout',
+      element: <CheckOut />
+    }
   ]);
   
 
