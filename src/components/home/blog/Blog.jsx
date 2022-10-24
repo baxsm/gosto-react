@@ -13,7 +13,7 @@ function Blog() {
                 {
                     blog.slice(0, 3).map((item, index) => {
                         return (
-                            <div className="post">
+                            <div className="post" key={index}>
                                 <div className="content">
                                     <div className="img">
                                         <img src={item.cover} alt="" />
