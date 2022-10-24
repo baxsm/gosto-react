@@ -1,4 +1,4 @@
-import { ADD_CART, REMOVE_ITEM } from "./type"
+import { ADD_CART, REMOVE, REMOVE_ITEM } from "./type"
 
 export const ADD = (item) => {
     return {
@@ -9,7 +9,15 @@ export const ADD = (item) => {
 
 export const DELETE = (id) => {
     return {
-        type: REMOVE_ITEM,
+        type: REMOVE,
         payload: id
     }
 }
+
+export const REMOVE_ITM = (item) => {
+    return {
+        type: REMOVE_ITEM,
+        payload: item
+    }
+}
+

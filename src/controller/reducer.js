@@ -1,4 +1,4 @@
-import { ADD_CART, REMOVE_ITEM } from "./type"
+import { ADD_CART, REMOVE, REMOVE_ITEM } from "./type"
 
 const initialStore = {
     carts: [],
@@ -7,7 +7,7 @@ const initialStore = {
 export const cartReducer = (state = initialStore, action) => {
     switch (action.type) {
         case ADD_CART:
-            const itemIndex = state.carts.findIndex((item) => item.id === action.payload.id);
+            const itemIndex = state.carts.findIndex((item) => item.id == action.payload.id);
             if (itemIndex >= 0) {
                 state.carts[itemIndex].qty += 1;
             }
@@ -19,11 +19,27 @@ export const cartReducer = (state = initialStore, action) => {
                 }
             }
 
-        case REMOVE_ITEM:
+        case REMOVE:
             const data = state.carts.filter((item) => item.id != action.payload)
             return {
                 ...state,
                 carts: data
+            }
+
+        case REMOVE_ITEM:
+            const itmIndex = state.carts.findIndex((item) => item.id == action.payload.id);
+            if(state.carts[itmIndex].qty >= 1) {
+                const delete_item = (state.carts[itmIndex].qty -= 1);
+                return {
+                    ...state,
+                    carts: [...state.carts]
+                }
+            }else if(state.carts[itmIndex].qty == 1) {
+                const data = state.carts.filter((item) => item.id != action.payload.id);
+                return {
+                    ...state,
+                    carts: data
+                }
             }
 
         default:
